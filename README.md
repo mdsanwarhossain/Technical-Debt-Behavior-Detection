@@ -1,5 +1,5 @@
-# DesigniteJava
-DesigniteJava is a code quality assessment tool for code written in Java. It detects numerous design and implementation smells. It also computes many commonly used object-oriented metrics.
+# Technical-Debt-Behavior-Detection
+Technical-Debt-Behavior-Detection is a code quality assessment tool for code written in Java. It detects numerous design and implementation smells. It also computes many commonly used object-oriented metrics.
 
 ## Features
 * Detects 17 design smells
@@ -71,19 +71,9 @@ After the previous step is done:
 The implemented LCOM is a custom implementation to avoid the problems of existing LCOM alternatives. Traditional, LCOM value may range only between 0 and 1. However, there are many cases, when computing LCOM is not feasible and traditional implementations give value 0 giving us a false sense of satisfaction. So, when you find -1 as LCOM value for a class, this means we do not have enough information or LCOM is not applicable (for instance, for an interface). More details can be found here (though, it is an old post): https://www.tusharma.in/revisiting-lcom.html
 
 ## Contribute
-Feel free to clone/fork/contribute to the DesigniteJava open-source project.
+Feel free to clone/fork/contribute to the Technical-Debt-Behavior-Detection open-source project.
 
 ## Report Bugs
 Open an issue if you encounter a bug in the tool.
 
-## Credits
-Apart from [me](http://www.tusharma.in), following people generously contributed efforts to this project.
-- Antonis Gkortzis
-- Theodore Stassinopoulos
-- Alexandra Chaniotakis
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=tushartushar/DesigniteJava&type=Date)](https://star-history.com/#tushartushar/DesigniteJava&Date)
-# Technical-Debt-Behavior-Detection
 # Technical-Debt-Behavior-Detection
