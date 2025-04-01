@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>DesigniteJava</groupId>
 	<artifactId>TechnicalDebtBehaviorDetection</artifactId>
@@ -18,15 +18,40 @@
 			<artifactId>mockito-core</artifactId>
 			<version>4.2.0</version>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.eclipse.jdt</groupId>-->
+<!--			<artifactId>org.eclipse.jdt.core</artifactId>-->
+<!--			<version>3.24.0</version> &lt;!&ndash; Earlier version compatible with Java 11 &ndash;&gt;-->
+<!--		</dependency>-->
+<!--&lt;!&ndash;		<dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;			<groupId>org.eclipse.text</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;			<artifactId>org.eclipse.text</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;			<version>3.5.101</version>&ndash;&gt;-->
+<!--&lt;!&ndash;		</dependency>&ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>org.eclipse.platform</groupId>-->
+<!--			<artifactId>org.eclipse.text</artifactId>-->
+<!--			<version>3.12.0</version> &lt;!&ndash; Try an older version &ndash;&gt;-->
+<!--		</dependency>-->
+		<!-- Eclipse JDT Core -->
 		<dependency>
 			<groupId>org.eclipse.jdt</groupId>
 			<artifactId>org.eclipse.jdt.core</artifactId>
-			<version>3.31.0</version>
+			<version>3.24.0</version> <!-- Compatible with Java 11 -->
 		</dependency>
+
+		<!-- Eclipse Core Runtime -->
 		<dependency>
-			<groupId>org.eclipse.text</groupId>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>org.eclipse.core.runtime</artifactId>
+			<version>3.24.0</version> <!-- Compatible with Java 11 -->
+		</dependency>
+
+		<!-- Eclipse Text -->
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
 			<artifactId>org.eclipse.text</artifactId>
-			<version>3.5.101</version>
+			<version>3.12.0</version> <!-- Compatible with Java 11 -->
 		</dependency>
 		<dependency>
 			<groupId>commons-cli</groupId>
@@ -47,11 +72,12 @@
 			</testResource>
 		</testResources>
 		<plugins>
+			<!-- Build with dependencies -->
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
 				<appendAssemblyId>false</appendAssemblyId>
-				<finalName>${project.artifactId}</finalName>
+					<finalName>${project.artifactId}</finalName>
 					<archive>
 						<manifest>
 							<mainClass>Designite.Designite</mainClass>
@@ -63,14 +89,42 @@
 				</configuration>
 				<executions>
 					<execution>
-						<id>make-assembly</id> <!-- this is used for inheritance merges -->
-						<phase>package</phase> <!-- bind to the packaging phase -->
+						<id>make-assembly</id>
+						<phase>package</phase>
 						<goals>
 							<goal>single</goal>
 						</goals>
 					</execution>
 				</executions>
 			</plugin>
+
+			<!-- Build UI version with dependencies -->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>build-ui</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<appendAssemblyId>true</appendAssemblyId>
+							<finalName>${project.artifactId}-ui</finalName>
+							<archive>
+								<manifest>
+									<mainClass>Designite.DesigniteUILauncher</mainClass>
+								</manifest>
+							</archive>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Regular jar -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
