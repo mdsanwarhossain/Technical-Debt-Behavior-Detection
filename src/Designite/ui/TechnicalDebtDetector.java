@@ -679,7 +679,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-public class DesigniteUI extends Application {
+public class TechnicalDebtDetector extends Application {
 
     private TextArea codeInputArea;
     private TabPane resultsTabPane;
@@ -699,7 +699,7 @@ public class DesigniteUI extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("DesigniteJava Advanced Code Analyzer");
+        primaryStage.setTitle("Technical Debt Behaviors Detector");
 
         // Create the main layout
         BorderPane mainLayout = new BorderPane();
@@ -733,8 +733,8 @@ public class DesigniteUI extends Application {
 
         // Create temporary directories for processing
         try {
-            tempInputDir = Files.createTempDirectory("designite_input_");
-            tempOutputDir = Files.createTempDirectory("designite_output_");
+            tempInputDir = Files.createTempDirectory("code_input_");
+            tempOutputDir = Files.createTempDirectory("TD_output_");
 
             // Make sure they're deleted when the application exits
             tempInputDir.toFile().deleteOnExit();
@@ -749,14 +749,14 @@ public class DesigniteUI extends Application {
         topSection.setPadding(new Insets(0, 0, 10, 0));
 
         // Title
-        Label titleLabel = new Label("DesigniteJava Advanced Code Analyzer");
+        Label titleLabel = new Label("Technical Debt Behaviors Detector");
         titleLabel.setFont(Font.font("System", FontWeight.BOLD, 18));
 
         // Toolbar
         HBox toolbar = new HBox(10);
         toolbar.setAlignment(Pos.CENTER_LEFT);
 
-        loadFileButton = new Button("Load Java File");
+        loadFileButton = new Button("Upload File");
         loadFileButton.setOnAction(e -> loadJavaFile());
 
         saveResultsButton = new Button("Save Results");
@@ -768,7 +768,7 @@ public class DesigniteUI extends Application {
         themeComboBox.setValue("Light");
         themeComboBox.setOnAction(e -> changeTheme(themeComboBox.getValue()));
 
-        toolbar.getChildren().addAll(loadFileButton, saveResultsButton, new Separator(), themeLabel, themeComboBox);
+        toolbar.getChildren().addAll(loadFileButton, saveResultsButton, new Separator());//, themeLabel, themeComboBox
 
         topSection.getChildren().addAll(titleLabel, toolbar);
         return topSection;
@@ -940,7 +940,7 @@ public class DesigniteUI extends Application {
         if (selectedFile != null) {
             try {
                 // Create a temporary directory to store CSV files
-                Path tempDir = Files.createTempDirectory("designite_results_");
+                Path tempDir = Files.createTempDirectory("TD_results_");
 
                 // Write each result to a CSV file
                 for (Map.Entry<String, List<String[]>> entry : currentResults.entrySet()) {
@@ -1020,7 +1020,7 @@ public class DesigniteUI extends Application {
                 Path javaFilePath = tempInputDir.resolve("AnalysisTarget.java");
                 Files.write(javaFilePath, code.getBytes());
 
-                // Run Designite analysis
+                // Run TD analysis
                 String[] args = {"-i", tempInputDir.toString(), "-o", tempOutputDir.toString()};
                 Designite.main(args);
 

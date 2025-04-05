@@ -172,6 +172,12 @@
 			<systemPath>${project.basedir}/DesigniteJava.jar</systemPath>
 		</dependency>
 
+<!--		<dependency>-->
+<!--			<groupId>nz.ac.waikato.cms.weka</groupId>-->
+<!--			<artifactId>weka-stable</artifactId>-->
+<!--			<version>3.8.6</version>-->
+<!--		</dependency>-->
+
 		<!-- JavaFX dependencies -->
 		<dependency>
 			<groupId>org.openjfx</groupId>
@@ -263,6 +269,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<name>DesigniteJavaUI</name>
-	<description>A Java-based UI for the DesigniteJava code quality assessment tool</description>
+	<name>TechnicalDebtDetector</name>
+	<description>A Java-based UI for the TechnicalDebtDetector is a code quality assessment tool</description>
 </project>
