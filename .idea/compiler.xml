@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="TechnicalDebtBehaviorDetection" />
+        <module name="DesigniteJavaUI" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="TechnicalDebtBehaviorDetection" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

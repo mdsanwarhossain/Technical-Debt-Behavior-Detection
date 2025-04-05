@@ -30,13 +30,13 @@
 
 package Designite;
 
-import Designite.ui.DesigniteUI;
+import Designite.ui.TechnicalDebtDetector;
 
 /**
  * Launcher class to start Designite with a graphical user interface
  */
 public class DesigniteUILauncher {
     public static void main(String[] args) {
-        DesigniteUI.main(args);
+        TechnicalDebtDetector.main(args);
     }
 }
