@@ -28,7 +28,7 @@ import Designite.SourceModel.SM_Type;
 //import Designite.visitors.MethodInvocationVisitor;
 //import Designite.visitors.VariableDeclarationVisitor;
 
-public class MethodMetrics extends Metrics {
+public class MethodMetrics extends Designite.metrics.Metrics {
 
 	private int numOfParameters;
 	private int cyclomaticComplexity;
