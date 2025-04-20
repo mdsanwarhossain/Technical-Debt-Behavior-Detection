@@ -184,6 +184,7 @@ class OrderManager {
         System.out.println("Placing order for: " + customerName);
 
         // Validate order
+        //Implement code analysis to detect long methods (a technical debt indicator).
         if (amount <= 0) {
             System.out.println("Invalid order amount!");
             return;
