@@ -882,7 +882,7 @@ public class TechnicalDebtDetector extends Application {
 
         // Add placeholder chart
         PieChart smellsChart = new PieChart();
-        smellsChart.setTitle("Code Smells Distribution");
+        smellsChart.setTitle("Technical Debt Behavioural Distribution");
         smellsChart.setLabelsVisible(true);
         smellsChart.setPrefHeight(300);
 
