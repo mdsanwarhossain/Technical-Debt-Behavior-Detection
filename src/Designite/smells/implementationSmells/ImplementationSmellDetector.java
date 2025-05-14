@@ -42,10 +42,10 @@ public class ImplementationSmellDetector {
 	private static final String MISSING_DEFAULT = "Missing default";
 
 	// New implementation smells
-	private static final String MULTIPLE_RETURN_STATEMENTS = "Multiple Return Statements";
+//	private static final String MULTIPLE_RETURN_STATEMENTS = "Multiple Return Statements";
 	private static final String NESTED_TRY = "Nested Try";
 	private static final String DEEPLY_NESTED_BLOCK = "Deeply Nested Block";
-	private static final String REDUNDANT_VARIABLE = "Redundant Variable";
+//	private static final String REDUNDANT_VARIABLE = "Redundant Variable";
 	private static final String UNUSED_PARAMETER = "Unused Parameter";
 	private static final String EXCESSIVE_COMMENTS = "Excessive Comments";
 	private static final String DUPLICATE_CODE_FRAGMENT = "Duplicate Code Fragment";
@@ -74,11 +74,10 @@ public class ImplementationSmellDetector {
 		detectMagicNumber();
 		detectMissingDefault();
 
-		// New smell detection methods
-		detectMultipleReturnStatements();
+//		detectMultipleReturnStatements();
 		detectNestedTry();
 		detectDeeplyNestedBlock();
-		detectRedundantVariable();
+//		detectRedundantVariable();
 		detectUnusedParameter();
 		detectExcessiveComments();
 		detectDuplicateCodeFragment();
@@ -340,10 +339,10 @@ public class ImplementationSmellDetector {
 			ReturnStatementsVisitor visitor = new ReturnStatementsVisitor();
 			method.getMethodDeclaration().accept(visitor);
 
-			// Consider it a smell if there are more than 1 return statements
-			if (visitor.getReturnStatements().size() > 1) {
-				addToSmells(initializeCodeSmell(MULTIPLE_RETURN_STATEMENTS));
-			}
+//			// Consider it a smell if there are more than 1 return statements
+//			if (visitor.getReturnStatements().size() > 1) {
+//				addToSmells(initializeCodeSmell(MULTIPLE_RETURN_STATEMENTS));
+//			}
 		}
 		return smells;
 	}
@@ -461,21 +460,21 @@ public class ImplementationSmellDetector {
 	 * Detects redundant variables that are used only once immediately after declaration.
 	 * These variables don't add value and can be replaced with direct expressions.
 	 */
-	public List<ImplementationCodeSmell> detectRedundantVariable() {
-		SM_Method method = methodMetrics.getMethod();
-		if (method.hasBody()) {
-			VariableDeclarationVisitor visitor = new VariableDeclarationVisitor();
-			method.getMethodDeclaration().accept(visitor);
-
-			for (VariableDeclarationFragment varDecl : visitor.getVariableDeclarations()) {
-				if (isRedundantVariable(varDecl, method.getMethodDeclaration())) {
-					addToSmells(initializeCodeSmell(REDUNDANT_VARIABLE));
-					break; // One detection is enough
-				}
-			}
-		}
-		return smells;
-	}
+//	public List<ImplementationCodeSmell> detectRedundantVariable() {
+//		SM_Method method = methodMetrics.getMethod();
+//		if (method.hasBody()) {
+//			VariableDeclarationVisitor visitor = new VariableDeclarationVisitor();
+//			method.getMethodDeclaration().accept(visitor);
+//
+//			for (VariableDeclarationFragment varDecl : visitor.getVariableDeclarations()) {
+//				if (isRedundantVariable(varDecl, method.getMethodDeclaration())) {
+//					addToSmells(initializeCodeSmell(REDUNDANT_VARIABLE));
+//					break; // One detection is enough
+//				}
+//			}
+//		}
+//		return smells;
+//	}
 
 	private boolean isRedundantVariable(VariableDeclarationFragment varDecl, MethodDeclaration methodDecl) {
 		// A variable is considered redundant if:

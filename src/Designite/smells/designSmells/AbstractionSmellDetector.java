@@ -15,7 +15,7 @@ public class AbstractionSmellDetector extends DesignSmellDetector {
 	private static final String IMPERATIVE_ABSTRACTION = "Imperative Abstraction";
 	private static final String MULTIFACETED_ABSTRACTION = "Multifaceted Abstraction";
 	private static final String UNNECESSARY_ABSTRACTION = "Unnecessary Abstraction";
-	private static final String UNUTILIZED_ABSTRACTION = "Unutilized Abstraction";
+//	private static final String UNUTILIZED_ABSTRACTION = "Unutilized Abstraction";
 	
 	public AbstractionSmellDetector(TypeMetrics typeMetrics
 			, SourceItemInfo info) {
@@ -27,7 +27,7 @@ public class AbstractionSmellDetector extends DesignSmellDetector {
 		detectImperativeAbstraction();
 		detectMultifacetedAbstraction();
 		detectUnnecessaryAbstraction();
-		detectUnutilizedAbstraction();
+//		detectUnutilizedAbstraction();
 		return getSmells();
 	}
 	
@@ -82,12 +82,12 @@ public class AbstractionSmellDetector extends DesignSmellDetector {
 					<= getThresholdsDTO().getUnnecessaryAbstractionFewFields();
 	}
 	
-	public List<DesignCodeSmell> detectUnutilizedAbstraction() {
-		if (hasUnutilizedAbstraction()) {
-			addToSmells(initializeCodeSmell(UNUTILIZED_ABSTRACTION));
-		}
-		return getSmells();
-	}
+//	public List<DesignCodeSmell> detectUnutilizedAbstraction() {
+//		if (hasUnutilizedAbstraction()) {
+//			addToSmells(initializeCodeSmell(UNUTILIZED_ABSTRACTION));
+//		}
+//		return getSmells();
+//	}
 	
 	private boolean hasUnutilizedAbstraction() {
 		if (hasSuperTypes()) {
